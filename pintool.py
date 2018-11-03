@@ -16,9 +16,9 @@ import re
 
 
 #configure by the user
-PIN = "./pin-3.6-97554-g31f0a167d-gcc-linux/pin"
-INSCOUNT32 = "./pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/ManualExamples/obj-ia32/inscount0.so"
-INSCOUNT64 = "./pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/ManualExamples/obj-intel64/inscount0.so"
+PIN = "./pin/pin"
+INSCOUNT32 = "./prebuilt/obj-ia32/inscount0.so"
+INSCOUNT64 = "./prebuilt/obj-intel64/inscount0.so"
 
 
 def start():
@@ -51,7 +51,8 @@ def getCharset(num,addchar):
 				'2': s.ascii_uppercase,
 				'3': s.digits,
 				'4': s.hexdigits,
-				'5': s.punctuation,
+				# '5': s.punctuation,
+				'5': '_{}!@#$%^&',
 				'6': s.printable}
 	
 
@@ -110,7 +111,7 @@ def solve(initpass,passlen,symbfill,charset,expression):
 
 	initlen = len(initpass)
 	
-	for i in range(initlen,passlen):
+	for i in range(initlen + 1,passlen):
 	
 
 		if args.reverse:
